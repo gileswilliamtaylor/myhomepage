@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Giles Taylor</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="scripts/main.js"></script>
+  </head>
+  
+  <body>
+    <!-- Progress bar and navigation -->
+    <div id="progress-bar" class="progress-bar">
+      <div id="progress" class="progress-color">
+        <!-- Colors bar as user scrolls -->
+      </div>
+    </div>
+    
+    <div id="navigation" class="nav">
+      <div id="nav-button" class="nav-button">
+        <!-- Hamburger -->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <button id="nav-button-button" class="nav-button-button">
+          <!-- Full height and width transparent button
+          to ensure clickability across browsers -->
+        </button>
+      </div>
+      <div class="external-buttons">
+        <div class="icon github">
+          <button id="github-button" class="external-button"></button>
+        </div>
+        <div class="icon linkedin">
+          <button id="linkedin-button" class="external-button"></button>
+        </div>
+      </div>
+      <ul id="menu" class="menu">
+        <li value="about-me" class="anchor-link">About Me</li>
+        <li value="projects" class="anchor-link">Projects</li>
+        <li value="cv" class="anchor-link">CV</li>
+        <li value="contact-me" class="anchor-link">Contact Me</li>
+      </ul>
+    </div>
+    
+    <!-- Main content -->
+    <div class="profile-pic"></div>
+
+    <div class="landing">
+      <div class="landing-text">
+        <h1>Giles Taylor</h1>
+        <h2>Front-end Developer</h2>
+      </div>
+    </div>
+    
+    <div id="sections">
+      <div id="about-me" class="section">
+        <div class="content">
+          <h3>About Me</h3>
+          <p class="statement">
+            Hi, I'm Giles and I'm embarking on a new career as a front-end web developer. Self-taught and eager to advance further, I am driven by the challenges of building websites and the satisfaction of making code that works. I currently write in combinations of HTML, CSS, JavaScript, Sass, JQuery, and JSON. My next project will be written in React.
+          </p>
+          <p class="statement">
+            I was born in Reading and now live in Forest Hill where I spend my time drawing, writing, and watching old movies and new television. 
+          </p>
+        </div>
+      </div>
+      
+      <div id="projects" class="section">
+        <div class="content">
+          <h3>Projects</h3>
+          <div class="projects-container">
+
+            <div class="project" id="ordersomefood">
+              <div class="img-container">
+                <img class="img project-img" src="images/ordersomefood.jpg" />
+                <img class="img open" src="images/open.png" />
+              </div>
+              <div class="details">
+                <h4>Order Some Food</h4>
+                <p class="project-detail">HTML | Sass | JQuery | JSON | 
+                  <a href="https://github.com/gileswilliamtaylor/ordersomefood" target="_blank">Github</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="project" id="moviefinder">
+              <div class="img-container">
+                <img class="img project-img" src="images/moviefinder.jpg" />
+                <img class="img open" src="images/open.png" />
+              </div>
+              <div class="details">
+                <h4>Movie Finder</h4>
+                <p class="project-detail">HTML | CSS | JavaScript | JSON | 
+                  <a href="https://github.com/gileswilliamtaylor/moviefinder" target="_blank">Github</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="project" id="my-homepage">
+              <div class="img-container">
+                <img class="img project-img unselectable" src="images/myhomepage.jpg" />
+              </div>
+              <div class="details">
+                <h4>My Homepage</h4>
+                <p class="project-detail">HTML | Sass | JavaScript | 
+                  <a href="https://github.com/gileswilliamtaylor/myhomepage" target="_blank">Github</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      <div id="cv" class="section">
+        <div class="content">
+          <h3>CV</h3>
+
+          <div class="cv-container">
+            <div class="experience">
+              <h5>Experience</h5>
+              <h6>Senior Assistant, LSE (Jun 2015 - Present)</h6>
+              <p class="cv-description">I examine student applications for financial support, analysing living costs and mitigating circumstances in order to calculate appropriate hardship awards and scholarships.</p>
+            
+              <h6>Programmes Officer, King’s College London (Jun 2014 – Jun 2015)</h6>
+              <p class="cv-description">I invented and implemented new systems for student assessment administration that improved the speed and efficiency of the marking process. I built and maintained user interfaces on the College’s e-learning platform.</p>
+            
+              <h6>Teaching Assistant, University of St Andrews (Sep 2012 – May 2014)</h6>
+              <p class="cv-description">Leading lectures, seminars, and skill-building workshops in Film Studies, I created lesson plans and course materials.</p>
+            
+              <h6>Undergraduate Secretary, Goldsmiths, University of London (Sep 2010 – Jul 2011) </h6>
+              <p class="cv-description">Coordinating start-of-year timetables, induction activities, and teaching groups in the Department of Media and Communications, I organised and compiled the delivery of advanced information to incoming and continuing students.</p>
+              
+              <h6>Administrative Assistant, University of Reading (Jan 2009 – Jun 2009)</h6>
+              <p class="cv-description">Website and database management in the Department of Film, Theatre, and Television.</p>
+            
+              <h6>Administrative Assistant, University of Reading (Jan 2008 – Aug 2008)</h6>
+              <p class="cv-description">Coordinating admissions for the School of Health and Social Care, I devised new methods of recordkeeping and correspondence that improved communication channels between the school and applicants. Using university style guides and terminology, I designed and wrote copy for letters, forms, prospectuses, and the website.</p>
+            
+              <h6>Secretary to the Head of Department, University of Reading (Jul 2007 – Oct 2007)</h6>
+              <p class="cv-description">Student assessment administration in the Department of Chemistry.</p>
+            </div>
+
+            <div class="education">
+              <h5>Education</h5>
+              <h6>University College London</h6>
+              <p class="cv-description">MA with Distinction in Film Studies</p>
+              <h6>King's College London</h6>
+              <p class="cv-description">BA with First Class Honours in Comparative Literature with Film Studies</p>
+              <h6>The Piggott School Reading</h6>
+              <p class="cv-description">A-Level English Literature, Mathematics, and Music, AS-Level Business Studies</p>
+            </div>
+
+            <div class="what-i-bring">
+              <h5>What I bring</h5>
+              <p class="cv-description">A high level of competence with front-end web languages, Sublime Text, CMS web editors, and FileZilla. Further experience with ReactJS, AngularJS, Bootstrap, HTML emails, Ruby, Ruby on Rails, and SQL.</p>
+              <p class="cv-description">Excellent organisation, attention to detail, and the ability to perform well under pressure.</p>
+              <p class="cv-description">A passion for clean code and functionality.</p>
+            </div>
+          </div>
+
+          <div class="download-cv">
+            <p><a href="gilestaylorcv.pdf" target="_blank">Download full CV</a></p>
+          </div>
+                  
+        </div>
+      </div>
+      <div id="contact-me" class="section">
+        <div class="content">
+          <h3>Contact Me</h3>
+            <div class="contact-container">
+              <p class="statement">Send me an email at  
+                <a href="mailto:hello@gilestaylor.info">hello@gilestaylor.info</a> 
+              </p>
+            </div>
+
+                      
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

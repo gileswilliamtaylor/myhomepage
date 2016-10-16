@@ -1,0 +1,503 @@
+@import "reset";
+@import "breakpoints";
+@import "mixins";
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900";
+
+$font-stack: Roboto, Helvetica, Arial, sans-serif;
+
+
+/*---------
+
+COLOURS
+
+---------*/
+
+$color: rgb(20, 180, 160);
+$inverted-color: invert($color);
+$blue: rgb(0, 0, 200);
+$dark-blue: rgb(0, 0, 25);
+$dark-grey: rgb(50, 50, 50);
+$light-grey: rgb(225, 225, 225);
+$white: rgb(255, 255, 255);
+
+
+/*---------
+
+FONT-SIZES
+
+---------*/
+
+$biggest: 8em;
+$bigger: 3.5em;
+$big: 2.5em;
+$medium: 2em;
+$small: 1.6em;
+$smallest: 1.4em;
+
+
+/*---------
+
+Z-INDEXES
+
+---------*/
+
+$z-index-progress-bar: 2;
+$z-index-nav: 1;
+$z-index-menu: -1;
+$z-index-profile-pic: -1;
+
+
+/*------------
+
+EXTENSIONS
+
+------------*/
+
+allcaps {text-transform: uppercase;}
+blockdisplay {display: block;}
+clearfix {clear: both;}
+fullheight {height: 100%;}
+fullwidth {width: 100%;}
+inlinedisplay {display: inline;}
+viewerheight {height: 100vh;}
+
+
+/*----------------
+
+HTML and BODY
+
+----------------*/
+
+body {
+  font: 62.5% $font-stack;
+  color: $color;
+  &.freeze {
+    overflow: hidden;
+  }
+}
+
+h1 {
+  font-size: $big;
+  @extend allcaps;
+  @include respond-to(small) {
+    font-size: $bigger;
+  }
+  @include respond-to(medium) {
+    font-size: $biggest;
+  }
+}
+
+h2 {
+  font-size: $medium;
+  font-weight: normal;
+  @extend allcaps;
+  @include respond-to(small) {
+    font-size: $big;
+  }
+  @include respond-to(medium) {
+    font-size: $bigger;
+  }
+}
+
+h3 {
+  font-size: $bigger;
+  margin: 30px 0;
+}
+
+h4 {
+  font-size: $medium;
+  margin: 20px 0 10px 0;
+  @extend allcaps;
+}
+
+h5 {
+  font-size: $medium;
+  font-weight: lighter;
+  margin: 20px 0;
+  @extend allcaps;
+}
+
+h6 {
+  font-size: $small;
+  margin: 5px 0;
+}
+
+p {
+  font-size: $small;
+  font-weight: lighter;
+  line-height: 150%;
+  margin: 20px 0;
+
+  &.statement {
+    font-size: $medium;
+    @include respond-to(medium) {
+      font-size: $big;
+    }
+  }
+
+  &.project-detail, &.cv-description {
+    margin-top: 0;
+  }
+
+  &.contact-details {
+    font-size: $medium;
+  }
+}
+
+
+/*----------------
+
+PROGRESS BAR
+
+----------------*/
+
+.progress-bar {
+  background: lighten($inverted-color, 30%);
+  height: 4px;
+  z-index: $z-index-progress-bar;
+  @extend fullwidth;
+  @include position(fixed, $top: 51px, $left: 0);
+  @include respond-to(small) {
+    height: 8px;
+    @include position($top: 0);
+  }
+
+  .progress-color {
+    background-color: $inverted-color;
+    width: 0;
+    @extend fullheight;
+  }
+}
+
+
+/*----------------
+
+NAVIGATION
+
+----------------*/
+
+.nav {
+  background: rgba($white, 0.9);
+  z-index: $z-index-nav;
+  @extend fullwidth;
+  @include flex($justify-content:flex-start);
+  @include position(fixed, $top: 0, $left: 0);
+  @include transition(transform 300ms ease-in-out);
+  @include respond-to(small) {
+    @include position($top: 8px);
+  }
+  @include respond-to(medium) {
+    background: transparent;
+    margin: 0;
+  }
+
+  &.nav-up {
+    @include respond-to(small) {
+      @include transform(translateY(-59px));
+    }
+  }
+
+  .nav-button {
+    height: 35px;
+    width: 40px;
+    margin: 8px auto 0 8px;
+    @include position(relative);
+
+    span {
+      background-color: $inverted-color;
+      border-radius: 15px;
+      height: 7px;
+      opacity: 1;
+      @extend fullwidth;
+      @include position(absolute, $left: 0);
+      @include transition(500ms ease-in-out);
+      &:nth-child(1) {
+        @include position($top: 0px);
+      }
+      &:nth-child(2), &:nth-child(3) {
+        @include position($top: 14px);
+      }
+      &:nth-child(4) {
+        top: 28px;
+      }
+    }
+
+    &.menu-open {
+      span {
+        &:nth-child(1), &:nth-child(4) {
+          opacity: 0;
+        }
+        &:nth-child(1) {
+          @include transform(translateY(14px) scale(0));
+        }
+        &:nth-child(2) {
+          @include transform(rotate(45deg));
+        }
+        &:nth-child(3) {
+          @include transform(rotate(-45deg));
+        }
+        &:nth-child(4) {
+          @include transform(translateY(-14px) scale(0));
+        }
+      }
+    }
+
+    .nav-button-button {
+      background: transparent;
+      @extend fullheight, fullwidth;
+      @include position(absolute, $top: 0, $left: 0);
+    }
+  }
+
+  .external-buttons {
+    background-position: 0 center;
+    @include flex($justify-content: space-between);
+
+
+    .icon {
+      height: 35px;
+      margin: 8px;
+      @include transition(300ms ease-in-out);
+      @include respond-to(medium) {
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      &.github {
+        background-image: url("../images/github-black.png");
+        width: 35px;
+        @include background-size(cover);
+      }
+
+      &.linkedin {
+        background-image: url("../images/linkedin-blue.png");
+        width: 43px;
+        @include background-size(cover);
+      }
+    }
+    button {
+      background: transparent;
+      pointer: cursor;
+      @extend fullheight, fullwidth;
+    }
+  }
+
+  .menu {
+    background: $white;
+    padding-top: 55px;
+    z-index: $z-index-menu;
+    @extend fullwidth, viewerheight;
+    @include position(fixed, $top: 0, $left: -100%);
+    @include transition(300ms ease-in-out);
+
+    @include respond-to(small) {
+      background: rgba($white, 0.9);
+    }
+
+    &.open-menu {
+      @include transform(translateX(100%));
+    }
+
+    li {
+      cursor: pointer;
+      font-size: $big;
+      margin: 10px;
+      padding: 10px;
+
+      &:hover {
+        background: desaturate(lighten($color, 40%), 30%);
+      }
+    }  
+  }
+}
+
+
+/*----------------
+
+MAIN CONTENT
+
+----------------*/
+
+.profile-pic {
+  background-image: url("../images/profile-pic-sm.jpg");
+  background-position: 0 center;
+  z-index: $z-index-profile-pic;
+  @extend fullwidth, viewerheight;
+  @include background-size(cover);
+  @include respond-to(small) {
+    @include position(fixed);
+  }
+  @include respond-to(large) {
+    background-image: url("../images/profile-pic.jpg");
+  }
+}
+
+.landing {
+  @extend fullwidth, viewerheight;
+  @include flex($align-items: center, $justify-content: flex-end);
+  @include position(absolute, $top: 0, $left: 0);
+  @include respond-to(small) {
+    @include position(relative);
+  }
+
+  .landing-text {
+    color: rgba($white, 0.8);
+    padding: 0 5%;
+    white-space: nowrap;
+    @include respond-to(small) {
+      padding: 0 80px;
+    }
+    @include respond-to(medium) {
+      padding: 0 10%;
+    }
+    @include respond-to(large) {
+      max-width: 1600px;
+      padding: 0 15%;
+    }
+  }
+}
+
+.section {
+  background-size: cover;
+  min-height: calc(100vh - 54px);
+  @extend clearfix, fullwidth;
+  @include position(relative);
+  @include respond-to(small) {
+    min-height: 100vh;
+  }
+
+  .content {
+    margin: 0 auto;
+    opacity: 0;
+    padding: 25px 5% 25px 5%;
+    @include position(relative, $top: 50px);
+    @include transition(500ms ease-in-out);
+    @include respond-to(small) {
+      padding: 50px 80px;
+    }
+    @include respond-to(medium) {
+      padding: 50px 10%;
+    }
+    @include respond-to(large) {
+      max-width: 1600px;
+      padding: 50px 15%;
+    }
+
+    &.reveal {
+      opacity: 1;
+      @include transform(translateY(-50px));
+    }
+
+    .projects-container {
+      @extend fullheight;
+      @include flex($flex-wrap: wrap, $justify-content: space-between);
+
+      .project {
+        margin-bottom: 50px;
+
+        @include respond-to(medium) {
+          width: 40%;
+        }
+        .img-container {
+          cursor: pointer;
+          @extend fullwidth;
+          @include position(relative);
+
+          .project-img {
+            border: 1px solid $light-grey;
+            border-radius: 20px 0 20px 20px;
+            opacity: 1;
+            @extend blockdisplay, fullwidth;
+            @include box-sizing(border-box);
+            @include transition(200ms ease-in-out);
+
+            &.faded {
+              opacity: 0.7;
+            }
+
+            &.unselectable {
+              cursor: default;
+            }
+          }
+
+          .open {
+            border: 1px solid $light-grey;
+            height: 15%;
+            @include box-sizing(border-box);
+            @include position(absolute, $top: 0, $right: 0);
+            @include transition(200ms ease-in-out);
+
+            &.bigger {
+              @include transform(scale(1.2) translate(calc(-10% + 1px), calc(10% - 1px)));
+            }
+          }
+        }
+        .details {
+          margin: 20px 0 0 10px;          
+        }
+      }
+    }
+
+    .cv-container {
+      @include flex($flex-wrap: wrap, $justify-content: space-between);
+      
+      .experience {
+        width: 100%;
+      }
+      .education, .what-i-bring {
+        @include respond-to(large) {
+          width: 45%;
+        }
+      }
+    }
+
+    .download-cv {
+      margin: 50px 0;
+      a {
+        color: $white;
+      }
+    }
+      
+    .contact-subcontainer {
+      margin: 30px 0;
+    }    
+  }
+}
+
+
+/*----------------
+
+COLOUR FUNCTIONS
+
+----------------*/
+
+$sections: about-me, projects, cv, contact-me;
+
+@for $i from 1 through length($sections) {
+  @if ($i % 2 != 0) {
+    .section:nth-of-type(#{$i}) {
+      @include linear-gradient($color, desaturate($color, 30%));
+      color: $white;
+
+      a {
+        color: $white;
+      }
+    }
+  } @else {
+    .section:nth-of-type(#{$i}) {
+      background-color: $white;
+      color: $color;
+    }
+
+    a {
+      color: $blue;
+      }
+  }
+}
+
+
+
+
+
+

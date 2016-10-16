@@ -1,0 +1,76 @@
+@mixin background-size($background-size) {
+  -webkit-background-size: $background-size;
+  -moz-background-size: $background-size;
+  -ms-background-size: $background-size;
+  -o-background-size: $background-size;
+  background-size: $background-size;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+@mixin flex($align-items: null, $flex-basis: null, $flex-direction: null, $flex-wrap: null, $justify-content: null, $order: null) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: $align-items;
+  align-items: $align-items;
+  -webkit-flex-basis: $flex-basis;
+  -moz-flex-basis: $flex-basis;
+  flex-basis: $flex-basis;
+  -webkit-flex-direction: $flex-direction;
+  -moz-flex-direction: $flex-direction;
+  flex-direction: $flex-direction;
+  -webkit-flex-wrap: $flex-wrap;
+  -moz-flex-wrap: $flex-wrap;
+  flex-wrap: $flex-wrap;
+  -webkit-justify-content: $justify-content;
+  -moz-justify-content: $justify-content;
+  justify-content: $justify-content;
+  -webkit-order: $order;
+  -moz-order: $order;
+  order: $order;
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin transition($transitions) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  -ms-transition: $transitions;
+  transition: $transitions;
+}

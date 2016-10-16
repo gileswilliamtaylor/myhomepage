@@ -1,0 +1,42 @@
+html, 
+body, 
+header, 
+main, 
+footer, 
+div, 
+ul, 
+li, 
+button,  
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+	border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  outline: 0;
+}

@@ -1,0 +1,505 @@
+@import "reset";
+@import "breakpoints";
+@import "mixins";
+@import "https://fonts.googleapis.com/css?family=Oswald:300,400,700";
+
+$font-stack: Oswald, Helvetica, Arial, sans-serif;
+
+
+/*---------
+
+COLOURS
+
+---------*/
+
+$color: #222;
+$mid-color: lighten($color, 20%);
+$light-color: lighten($color, 40%);
+$lighter-color: lighten($color, 60%);
+$lightest-color: lighten($color, 85%);
+$white: #fff;
+$dark-blue: #003;
+$dark-red: #c00;
+$red: #f00;
+$button-green: #3ea;
+$lighter-green: lighten($button-green, 30%);
+$pale-pink: #fee;
+
+
+/*---------
+
+FONT-SIZES
+
+---------*/
+
+$biggest: 8em;
+$bigger: 3.5em;
+$big: 2.5em;
+$medium: 2em;
+$small: 1.6em;
+$smaller: 1.4em;
+
+
+/*---------
+
+Z-INDEXES
+
+---------*/
+$z-index-menu-button: 1;
+$z-index-header-smaller: 2;
+$z-index-message-container: 3;
+
+
+/*------------
+
+EXTENSIONS
+
+------------*/
+
+allcaps {text-transform: uppercase;}
+fullheight {height: 100%;}
+fullwidth {width: 100%;}
+inlinedisplay {display: inline;}
+lighter {font-weight: lighter;}
+viewerheight {height: 100vh;}
+
+green-button {
+	background: $button-green;
+	border-radius: 5px;
+	font-size: $medium;
+	font-weight: lighter;
+	height: 50px;
+}
+
+
+/*----------------
+
+HTML and BODY
+
+----------------*/
+
+body {
+  font: 62.5% $font-stack;
+  color: $color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend allcaps;
+}
+
+h1 {
+  display: none;
+  @extend allcaps;
+  @include respond-to(small) {
+    color: $white;
+    display: block;
+    font-size: $biggest;
+  }
+}
+
+h2 {
+  color: $white;
+  font-size: $big;
+  @extend allcaps;
+  @include respond-to(small) {
+    font-size: $bigger;
+  }
+}
+
+h3 {
+  font-size: $medium;
+  margin-bottom: 20px;
+}
+
+h4 {
+  color: $dark-red;
+  font-size: $medium;
+  margin: 0 0 20px 5px;
+}
+
+h5 {
+  font-size: $small;
+}
+
+
+/*----------------
+
+HEADER
+
+----------------*/
+
+.header {
+  height: 50px;
+  overflow: hidden;
+  will-change: transform;
+  @include transform(translate3d(0,0,0));
+  @extend fullwidth;
+
+  &.bigger {
+    display: none;
+
+    @include respond-to(small) {
+      background-image: url("../images/restaurant.jpg");
+      background-position: 0 center;
+      height: 325px;
+      @include background-size(cover);
+      @include flex($align-items: center, $justify-content: center);
+    }
+  }
+
+  &.smaller {
+    background: $dark-blue;
+    height: 50px;
+    padding-left: 5%;
+    white-space: nowrap;
+    z-index: $z-index-header-smaller;
+    @include flex($align-items: center);
+    @include position(fixed, $top: 0, $left: 0);
+    @include respond-to(small) {
+      @include position($top: -50px);
+      @include transition(transform 300ms ease-in-out);
+
+      &.scrolling-header {
+        @include transform(translateY(50px));
+      }
+    }
+
+    .basket-button {
+      background: $button-green;
+      font-size: $small;
+      margin-left: auto;
+      padding: 0 20px;
+      @extend fullheight, lighter;
+      @include flex($align-items: center);
+      @include respond-to(small) {
+        display: none;
+      }
+
+      &.basket-open {
+        background: $lighter-green;
+      }
+
+      @include respond-to(small) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+/*----------------
+
+ORDER FORM
+
+----------------*/
+
+.order-form {
+  margin: 50px 0;
+  padding: 0 5%;
+  @extend fullwidth;
+  @include flex($align-items: stretch, $flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start);
+  @include position(relative);
+
+  /*--- 
+  LEFT COLUMN 
+  ---*/
+
+  .left-column {
+    overflow: hidden;
+    @include flex($flex-basis: 0, $order: 1);
+
+    @include respond-to(medium) {
+      margin-right: 5%;
+      @include flex($flex-basis: 100px);
+    }
+
+    .sidebar {
+      background: $white;
+      font-weight: lighter;
+      will-change: transform;
+      @include transform(translate3d(0,0,0));
+
+      &.scrolling-sidebar {
+        @include respond-to(medium) {
+          @include position(fixed, $top: 75px, $left: 5%);
+        }
+      }
+
+      ul {
+        li {
+          a {
+            color: $light-color;
+            font-size: $small;
+            line-height: 2em;
+            @extend allcaps;
+
+            &:hover {
+              color: $color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+   /*--- 
+  MIDDLE COLUMN (MENU) 
+  ---*/
+
+  .menu {
+    margin-top: 50px;
+    @extend fullwidth;
+    @include flex($flex-basis: 1, $flex-direction: column, $order: 2);
+
+    @include respond-to(small) {
+      margin: 0 5% 0 0;
+      width: calc(95% - 250px);
+    }
+
+    @include respond-to(medium) {
+      width: calc(90% - 350px);
+    }
+
+    ul {
+      margin-bottom: 50px;
+      li {
+        border-top: 1px solid $lighter-color;
+        font-size: $small;
+        padding: 20px 5px;
+        @include position(relative);
+
+        &:last-child {
+          border-bottom: 1px solid $lighter-color;
+          margin-bottom: 20px;
+        }
+
+        &:hover {
+          @include respond-to(small) {
+            background: $lightest-color;
+          }
+        }
+
+        .dish-price {
+          padding-right: 5px;
+          @include position(absolute, $right: 0);
+        }
+
+        blockquote {
+          color: $mid-color;
+          font-weight: lighter;
+          margin: 0;
+        }
+
+        .menu-button {
+          background: transparent;
+          z-index: $z-index-menu-button;
+          @extend fullheight, fullwidth;
+          @include position(absolute, $top: 0, $left: 0);
+        }
+      }
+    }
+
+    .error {
+      font-size: $small;
+      font-weight: lighter;
+    }
+  }
+
+  /*--- 
+  RIGHT COLUMN 
+  ---*/
+
+  .right-column {
+    display: none;
+    @extend fullwidth;
+    @include position(fixed, $top: 50px, $left: 0);
+    @include respond-to(small) {
+      height: 400px;
+      @include flex($flex-basis: 250px, $order: 3);
+      @include position(relative, $top: 0);
+    }
+
+    .my-order {
+      max-height: calc(60vh - 100px);
+      padding: 5%;
+      will-change: transform;
+      @extend fullwidth;
+      @include position(relative);
+      @include transform(translate3d(0,0,0));
+      @include respond-to(small) {
+        display: block;
+        max-height: calc(70vh - 100px);
+        padding: 0;
+        width: 250px;
+      }
+
+      &.scrolling-order {
+        @include position(fixed, $top: 75px, $right: 5%);
+      }
+
+      .empty-basket-message, .ordered-item, .under-minimum-spend, .our-fee {
+        font-size: $small; 
+        font-weight: lighter;
+
+        @include respond-to(small) {
+          font-size: $smaller;
+        }
+      }
+
+      .basket {
+        display: none;
+        @extend fullwidth;
+
+        .order-container {
+          margin-bottom: 20px;
+          max-height: calc(70vh - 200px);
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          -moz-scrollbars: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          @extend fullwidth;
+          @include respond-to(small) {
+            max-height: calc(60vh - 200px);
+          }
+
+          .order {  
+            @extend fullwidth;
+
+            .ordered-item {
+              line-height: 30px;
+              @include flex($align-items: stretch, $flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start);
+              @extend fullwidth;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              .ordered-quantity {
+                @include flex($flex-basis: 25px, $order: 1);
+              }
+
+              .ordered-name {
+                margin-right: auto;
+                @include flex($flex-basis: 1, $order: 2);
+              }
+
+              .ordered-price {
+                margin-right: 5px;
+                @include flex($order: 3);
+              }
+              .remove-item {
+                @include flex($flex-basis: 20px, $order: 4);
+                @include position(relative);
+
+                @include respond-to(small) {
+                  opacity: 0;
+                }
+
+                &.remove-me-now {
+                  @include respond-to(small) {
+                    opacity: 1;
+                  }
+                }
+
+                span {
+                  background: $light-color;
+                  height: 2px;
+                  width: 15px;
+                  @include position (absolute, $top: 14px, $left: 0);
+
+                  &:nth-child(1) {
+                    @include transform(rotate(45deg));
+                  }
+
+                  &:nth-child(2) {
+                    @include transform(rotate(-45deg));
+                  }
+
+                  @include respond-to(small) {
+                    background: $red;
+                  }
+                }
+
+                button {
+                  background: transparent;
+                  @extend fullheight, fullwidth;
+                  @include position(absolute);  
+                }
+              }
+            }
+          }
+        }
+
+        .under-minimum-spend, .our-fee, .total {
+          margin-bottom: 20px;
+          padding-right: 25px;
+          @include flex($justify-content: flex-start);
+          @extend fullwidth;
+
+          .statement {
+            margin-right: auto;
+          }     
+        }
+
+        .under-minimum-spend {
+          color: $red;
+        }
+
+        .total {
+          font-size: $medium;
+          font-weight: bold;
+        }
+
+        button {
+          width: calc(100% - 25px);
+          @extend green-button;
+        }
+      }
+    }
+  }
+
+}
+
+/*----------------
+
+MESSAGE
+
+----------------*/
+
+.message-container {
+  display: none;
+
+  &.visible-message {
+    background: transparent;
+    z-index: $z-index-message-container;
+    @extend fullwidth, viewerheight;
+    @include flex($align-items: center, $justify-content: center);
+    @include position(fixed, $top: 0, $left: 0);
+  }
+
+  .message-box {
+    background-color: $pale-pink;
+    border: 1px solid $color;
+    padding: 30px 20px;
+    text-align: center;
+    width: 500px;
+    @include flex($align-items: center, $flex-direction: column, $justify-content: flex-start);
+
+    .message-lead {
+      font-size: $medium;
+    }
+
+    .message {
+      font-size: $small;
+      font-weight: lighter;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100px;
+      @extend green-button;
+    }
+  }
+}

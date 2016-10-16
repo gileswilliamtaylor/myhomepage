@@ -1,0 +1,19 @@
+$breakpoints: (
+	"small": 768px,
+	"medium": 992px,
+	"large": 1200px
+);
+
+@mixin respond-to($breakpoint) {
+	$screensize: map-get($breakpoints, $breakpoint);
+
+	@if $screensize != null {
+	  @media (min-width: $screensize) {
+	    @content;
+	  }
+	}
+
+	@else {
+	  @warn "No value retrieved from `#{$breakpoint}`."
+	}
+}

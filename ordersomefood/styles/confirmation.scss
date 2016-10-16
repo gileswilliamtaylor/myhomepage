@@ -1,0 +1,25 @@
+@import "main";
+
+
+/*-----------
+
+CONFIRMATION
+
+-----------*/
+
+.confirmation-container {
+  align-items: center;
+  display:-webkit-flex;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  @extend fullwidth;
+
+  .lead {
+    font-size: $big;
+
+    @include respond-to(small) {
+      font-size: $bigger;
+    }
+  }
+}

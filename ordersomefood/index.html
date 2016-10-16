@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Order Some Food</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script data-require="jquery" data-semver="3.0.0" src="scripts/node_modules/jquery/dist/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+  </head>
+  
+  <body>
+    <div class="header bigger">
+      <h1>Order Some Food</h1>
+    </div>
+    <div class="header smaller">
+      <h2>Order Some Food</h2>
+      <button type="button" class="basket-button" id="mob-basket-button">
+        Basket
+      </button>
+    </div>
+    <div class="order-form">
+      <div class="left-column" id="left-column">
+        <div class="sidebar" id="sidebar">
+          <ul id="courses"></ul>
+        </div>
+      </div>
+      
+      <div class="menu" id="menu"></div>
+      
+      <div class="right-column">
+        <div class="my-order" id="my-order">
+          <h3>My Order</h3>
+          <div class="empty-basket-message" id="empty-basket">
+            <p>Uh oh, it looks like you have no food in your basket!</p>
+          </div>
+          <div class="basket" id="basket">
+            <div class="order-container" id="order-container">
+              <ul class="order" id="order"></ul>
+            </div>
+            <div class="under-minimum-spend" id="under-minimum-spend">
+              <p class="statement">Minimum spend is</p>
+              <p class="statement-price">£15.00</p>
+            </div>
+            <div class="our-fee" id="our-fee">
+              <p class="statement">Our fee</p>
+              <p class="statement-price">£2.00</p>
+            </div>
+            <div class="total" id="total">
+              <p class="statement">Total</p>
+              <p class="statement-price total-price"></p>
+            </div>
+            <button type="button" class="buy-now" id="buy-now">Buy now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="message-container" id="message-container">
+      <div class="message-box">
+       <p class="message-lead" id="message-lead"></p>
+       <p class="message" id="message"></p>
+       <button type="button" class="message-button" id="message-button">OK</button>
+      </div>
+    </div>
+  </body>
+</html>

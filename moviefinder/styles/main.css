@@ -1,0 +1,419 @@
+/*----------------
+
+HTML and BODY
+
+----------------*/
+
+html, body, header, div, ul, li, span, main, h1, h2, p, a, img {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+	color: #5e5b64;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-size: 62.5%;
+}
+div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.frozen {
+  overflow: hidden;
+}
+
+
+/*----------------
+
+LOADING
+
+----------------*/
+
+.loading {
+  background-color: #fff; 
+  font-size: 4em;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+.loader {
+  animation: spin 2s linear infinite;
+  border: 8px solid #eee;
+  border-top: 8px solid #f95;
+  border-radius: 50%;
+  height: 60px;
+  margin: 0 auto;
+  position: relative;
+  top: 25%;
+  width: 60px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*----------------
+
+HEADER
+
+----------------*/
+
+header {
+  background-color: #222;
+  color: #ddd;
+  line-height: 80px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+h1 {
+  font-size: 4em;
+  text-transform: uppercase;
+}
+
+.refine {
+  background-color: #444;
+  border: 0;
+  color: #eee;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 2.8em;
+  height: 50px;
+  left: 0;
+  line-height: 50px;
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  top: 80px;
+  width: 100%;
+  z-index: 2;
+}
+
+.refine:focus {
+  outline: none;
+}
+
+
+/*----------------
+
+REFINE MENU
+
+----------------*/
+
+.refine-menu {
+  background-color: #ccc;
+  font-size: 2.4em;
+  position: fixed;
+  top: 130px;
+  transition: top 500ms ease-in-out;
+  -moz-transition: top 500ms ease-in-out;
+  -ms-transition: top 500ms ease-in-out;
+  -o-transition: top 500ms ease-in-out;
+  -webkit-transition: top 500ms ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.menu-hidden {
+  top: -100vh;
+  transform(translateY(-100vh));
+  -moz-transform(translateY(-100vh));
+  -ms-transform(translateY(-100vh));
+  -o-transform(translateY(-100vh));
+  -webkit-transform(translateY(-100vh));
+}
+
+.category-container {
+  position: relative;
+}
+
+.category-heading {
+  background-color: #bbb;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 50px;
+  text-transform: uppercase;
+}
+
+.filter-count {
+  padding-left: 5px;
+}
+
+.category-subcontainer {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: height 500ms ease-in-out;
+  -moz-transition: height 500ms ease-in-out;
+  -ms-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
+  -webkit-transition: height 500ms ease-in-out;
+}
+
+.clear-filter {
+  cursor: pointer;
+  background-color: #ccc;
+  font-weight: bold;
+  height: 0;
+  line-height: 50px;
+  overflow: hidden;
+  padding: 0 50px;
+  transition: height 500ms ease-in-out;
+  -moz-transition: height 500ms ease-in-out;
+  -ms-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
+  -webkit-transition: height 500ms ease-in-out;
+}
+
+.category-ul {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.category-ul li {
+  background-color: #eee;
+  border-bottom: 1px solid #bbb;
+  cursor: pointer;
+  line-height: 50px;
+  padding: 0 50px;
+}
+
+.selected {
+  color: #b22;
+  font-weight: bold;
+  
+}
+
+.unselectable {
+  color: #ccc;
+  pointer-events: none;
+}
+
+
+/*----------------
+
+MAIN & MOVIE LIST
+
+----------------*/
+
+main {
+  display: block;
+  margin: 0 5px;
+  padding-top: 130px;
+}
+
+.search-info, .movie {
+  padding: 20px;
+}
+
+.search-info {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
+
+.movie-list {
+  background-color: #fff;
+  width: 100%;
+}
+
+/*----------------
+Movie
+----------------*/
+
+.movie {
+  border-bottom: 1px solid #ccc;
+  font-weight: lighter;
+  position: relative;
+}
+
+h2 {
+  font-size: 2.6em;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.6em;
+  padding: 20px 0;
+}
+
+.thumbnail-container {
+  background: #ccc;
+  float: left;
+  height: 100%;
+  width: 100px;
+}
+
+.thumbnail {
+  width: 100%;
+}
+
+.info {
+  margin: 0 0 0 120px;
+}
+
+.details span {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.details span ~ span:before {
+  content: " | ";
+  padding: 0 5px;
+}
+
+.details span a {
+  color: #20a;
+  text-decoration: none;
+}
+
+.details span a:hover {
+  background-color: #ddd;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/*----------------
+------------------
+
+DESKTOP
+
+------------------
+----------------*/
+
+@media screen and (min-width: 786px) {
+
+
+  /*----------------
+
+  HEADER
+
+  ----------------*/
+
+  header {
+    height: 80px;
+  }
+  
+  h1 {
+    line-height: 80px;
+  }
+  
+  .refine {
+    display: none;
+  }
+  
+
+  /*----------------
+
+  REFINE MENU
+
+  ----------------*/
+
+  .refine-menu {
+    display: block;
+    float: left;
+    font-size: 1.4em;
+    margin: 0;
+    position: fixed;
+    top: 80px;
+    width: 200px;
+  }
+  
+  .refine-menu-category-container {
+    position: relative;
+  }
+  
+  .category-heading {
+    border-bottom: 0;
+    cursor: inherit;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 20px;
+    pointer-events: none;
+    text-align: left;
+  }
+  
+  .category-subcontainer {
+    display: inherit;
+  }
+  
+  .clear-filter {
+    height: 0;
+    line-height: 25px;
+    padding: 0 20px;
+  }
+  
+  .category-ul {
+    border-bottom: 0;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .category-ul li {
+    line-height: 20px;
+    padding: 0 20px;
+    text-align: left;
+    text-transform: capitalize;
+  }
+  
+  .category-ul li:hover {
+    background-color: #ddd;
+  }
+
+
+  /*----------------
+
+  MAIN & MOVIE LIST
+
+  ----------------*/
+
+  main {
+    padding-top: 80px;
+    margin: 0 50px 0 250px;
+    max-width: 800px;
+  }
+
+  /*----------------
+  Movie
+  ----------------*/
+  
+  .thumbnail {
+    width: 100px;
+  }
+  
+  .info {
+    margin: 0 0 0 170px;
+  }
+}
