@@ -34,6 +34,7 @@ function appendElements() {
   loader.className = "loader"; 
   refine.id = "refine";
   refine.className = "refine";
+  refine.setAttribute("aria-label", "Refine Button");
   refineMenu.id = "refine-menu";
   refineMenu.className = "refine-menu"
   main.id = "main";
@@ -268,6 +269,7 @@ function makeMovieList(myMoviesTitle, movieInfo) {
   // Set attributes
   movie.className = "movie";
   thumbnailContainer.className = "thumbnail-container";
+  thumbnail.alt = movieInfo.Title;
   thumbnail.className = "thumbnail";
   info.className = "info";
   title.className = "title";
@@ -572,7 +574,7 @@ function updateSearchInfo() {
       return value.toLowerCase();
     }).sort().join("-") + " " : "",
     directorResults = directorSelection.length ? " by " + commaAnd(directorSelection) : "",
-    countryResults = countrySelection.length ? " from " + commaAnd(countrySelection) : "",
+    countryResults = countrySelection.length ? " from " + countrySelection.sort().join("/") : "",
     yearResults = yearSelection.length ? " made in " + commaAnd(yearSelection) : "",
     searchInfo = document.getElementById("search-info");
 

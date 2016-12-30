@@ -57,7 +57,9 @@ function buildMenu(menujson) {
                 dish.description +
               "</blockquote>" +
               "<button type='button' class='menu-button' id='" +
-                courseId + ' ' + dish.id + 
+                courseId + "-" + dish.id + 
+              "' aria-label='" +
+                dish.name +
               "'></button>" +
             "</li>"
           );
@@ -99,12 +101,13 @@ function smoothScrollToCourses() {
 function chooseDish() {
     var menuItems = $(".menu-button");
     menuItems.click(function() {
-      var dishClicked = $(this).attr("id").split(" "),
+      var dishClicked = $(this).attr("id").split("-"),
         courseId = dishClicked[0],
         dishId = dishClicked[1],
         dish = findDish(courseId, dishId),
         dishInMyOrder = false;
         ninetyninthDish = false;
+
       for (var i = 0; i < myOrder.length; i++) {
         if (myOrder[i].id === dish.id) {
           // If dish already exists in order...
@@ -170,8 +173,9 @@ function updateMyOrder(dish, dishInMyOrder, ninetyninthDish) {
             "class='remove-item-button'" +
             "id='remove-button-" +
             dish.id +
+          "' aria-label='Remove " +
+            dish.name +
           "'>" +
-            
           "</button>" +
         "</span>" +
       "</li>"
